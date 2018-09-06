@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            padding: 50px;
+            perspective: 100px;
+            -webkit-perspective: 100px;
+            transition: 2s;
+        }
+
+        #div {
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            background: red;
+            transition: 2s;
+            /*position: relative;*/
+            /*line-height: 100px;*/
+            /*text-align: center;*/
+            /*font-size: 30px;*/
+            /*-webkit-transform-origin: center center -50px;*/
+            /*transform-origin: center center -50px;*/
+            -webkit-transform-style: preserve-3d;
+            /*transform: rotateY(180deg);*/
+            /*transform-style: preserve-3d;*/
+        }
+
+        #div span {
+            display: block;
+            width: 100px;
+            height:100px;
+            background: yellow;
+            -webkit-transform: rotateX(60deg);
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var div = document.querySelector('#div');
+//            div.style.WebkitTransform = div.style.transform = "skew(45deg) rotateZ(180deg) translate(100px)";
+
+//            var span = document.querySelector('span');
+            div.style.webkitTransform = div.style.transform = "rotateY(250deg)";
+        }
+
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="div">
+        <span>1</span>
+    </div>
+</div>
+
+</body>
+</html>
