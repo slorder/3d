@@ -1,0 +1,48 @@
+@keyframes rotateY {
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+
+}
+body, p {
+    margin: 0
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+#view {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    perspective: 300px;
+}
+
+.logoImg {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    width: 30%;
+    margin-top: -15%;
+}
+
+.logoImg img {
+    width: 100%;
+    display: block;
+    animation: 2s rotateY linear infinite;
+}
+
+#logoText {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+}
+
