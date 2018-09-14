@@ -7,10 +7,10 @@
     <style>
         #box {
             position: relative;
-            width: 2px;
-            height: 2px;
+            width: 10px;
+            height: 10px;
             margin: 200px auto;
-
+            background: blue;
         }
 
         #box div {
@@ -22,12 +22,35 @@
             height: 2px;
             background: red;
         }
+
+        #box div:nth-of-type(0) {
+            transform: rotate(0) translateY(87px);
+            opacity: 0;
+        }
+        #box div:nth-of-type(1) {
+            transform: rotate(0) translateY(87px);
+        }
+        #box div:nth-of-type(2) {
+            transform: rotate(60deg) translateY(87px);
+        }
+        #box div:nth-of-type(3) {
+            transform: rotate(120deg) translateY(87px);
+        }
+        #box div:nth-of-type(4) {
+            transform: rotate(180deg) translateY(87px);
+        }
+
+        #box div:nth-of-type(5) {
+            transform: rotate(240deg) translateY(87px);
+        }
+
+        #box div:nth-of-type(6) {
+            transform: rotate(300deg) translateY(87px);
+        }
     </style>
 </head>
 <body>
 <div id="box">
-    <div></div>
-    <div></div>
     <div></div>
     <div></div>
     <div></div>

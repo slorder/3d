@@ -1,5 +1,6 @@
 (function () {
-    setLoding();
+    // setLoding();
+    anmt5();
 })();
 
 //做图片预加载
@@ -108,7 +109,98 @@ function anmt3() {
             type: 'easeIn',
             callBack: function () {
                 view.removeChild(logo3);
+                anmt4();
             }
         })
     }, 1000)
+}
+
+//logo4 生成
+function anmt4() {
+    var view = document.querySelector('#view');
+    var logo4 = document.createElement('div');
+    var logoIcos = document.createElement('div');
+    var logo4Img = new Image();
+    var iconsLength = 27;
+    logo4.id = 'logo4';
+    logoIcos.id = 'logoIcos';
+    logo4Img.id = 'logo4Img';
+    logo4Img.src = imgData.logo[2];
+    //2种方案都可以
+    // css(logo4,'scale',0)
+    css(logo4, 'translateZ', -2000);
+    for (var i = 0; i < iconsLength; i++) {
+        var span = document.createElement('span');
+        var xR = 10 + Math.round(Math.random() * 240);
+        var xDeg = Math.round(Math.random() * 360);//(360 / 9) * (i % 9)
+        var yR = 10 + Math.round(Math.random() * 240);
+        var yDeg = Math.round(Math.random() * 360);//(360 / 9) * (i % 9)
+        css(span, 'rotateY', xDeg);
+        css(span, 'translateZ', xR);
+        //还不是很清楚
+        css(span, 'rotateX', yDeg);
+        css(span, 'translateY', yR);
+        span.style.backgroundImage = 'url(' + imgData.logoIco[(i % imgData.logoIco.length)] + ')';
+        logoIcos.appendChild(span);
+    }
+    logo4.appendChild(logoIcos);
+    logo4.appendChild(logo4Img);
+    view.appendChild(logo4);
+    MTween({
+        el: logo4,
+        // target: {scale: 100},
+        target: {translateZ: 0},
+        time: 3000,
+        type: 'easeOutStrong',
+        callBack: function () {
+            setTimeout(function () {
+                MTween({
+                    el: logo4,
+                    target: {translateZ: -1000, scale: 10},
+                    time: 4000,
+                    type: 'linear',
+                    callBack: function () {
+                        view.removeChild(logo4);
+                    }
+                });
+            }, 100)
+        }
+    })
+}
+
+//主体开始入场
+function anmt5() {
+    var tZ = document.querySelector('#tZ');
+    css(tZ, 'translateZ', -2000);
+    anmt6();
+    MTween({
+        el: tZ,
+        target: {translateZ: 200},
+        time: 3600,
+        type: 'easeBoth'
+    })
+}
+
+//生成主体的背景圆柱，圆柱入场
+function anmt6() {
+    var panoBg = document.querySelector('#panoBg');
+    var width = 129;
+    var deg = 360 / imgData.bg.length;
+    var R = parseInt(Math.tan((180 - deg) / 2 * Math.PI / 180) * (width / 2)) - 1;
+    var startDeg = 180;
+    css(panoBg, 'rotateY', -695);
+    for (var i = 0; i < imgData.bg.length; i++) {
+        var span = document.createElement('span');
+        css(span, 'rotateY', startDeg);
+        css(span, 'translateZ', -R);
+        span.style.backgroundImage = 'url(' + imgData.bg[i] + ')';
+        panoBg.appendChild(span);
+        startDeg -= deg;
+    }
+    MTween({
+        el: panoBg,
+        target: {rotateY: 720},
+        timer: 3600,
+        type: 'linear'
+    })
 }
